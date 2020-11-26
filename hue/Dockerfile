@@ -19,7 +19,7 @@ ENV HUE_VERSION=4.8.0
 
 RUN git clone https://github.com/cloudera/hue.git -b release-$HUE_VERSION /tmp/hue &&\
     cd /tmp/hue && \
-    git cherry-pick -n 7a9100d4a7f38eaef7bd4bd7c715ac1f24a969a8 e67c1105b85b815346758ef1b9cd714dd91d7ea3 && \
+    git cherry-pick -n 7a9100d4a7f38eaef7bd4bd7c715ac1f24a969a8 e67c1105b85b815346758ef1b9cd714dd91d7ea3 14dc72c4e087eaba8be1a84b340ad7e64d493133 && \
     rm /tmp/hue/desktop/conf/* && \
     PREFIX=/opt make install && \
     rm -rf /opt/hue/node_modules && \

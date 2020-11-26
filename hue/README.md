@@ -24,3 +24,4 @@ podman push quay.io/opendatahub/hue:<TAG>
 Due to the nature of our Hue usage, we have to modify the upstream code a bit by cherry-picking out of release commits:
 
 - [To make MySql connector build and work properly](https://docs.gethue.com/administrator/installation/dependencies/#mysql--mariadb) we cherry-pick `7a9100d4a7` and `e67c1105b8`.
+- [Apply a fix for `boto` allowing co-located S3 storage](https://github.com/cloudera/hue/pull/1435) via `14dc72c4e0`.
