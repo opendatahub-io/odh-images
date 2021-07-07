@@ -52,6 +52,7 @@ RUN curl https://raw.githubusercontent.com/${SUPERSET_REPO}/${SUPERSET_VERSION}/
         redis==2.10.5 \
         sqlalchemy-clickhouse==0.1.5.post0 \
         sqlalchemy-redshift==0.7.1 \
+        sqlalchemy-trino==0.3.0 \
         superset==${SUPERSET_VERSION} && \
     rm requirements.txt
 
