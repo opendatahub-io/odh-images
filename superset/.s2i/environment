@@ -1,4 +1,4 @@
-SUPERSET_VERSION=1.1.0
+SUPERSET_VERSION=1.2.0
 FLASK_ENV=production
 FLASK_APP=superset.app:create_app()
 PYTHONPATH=/opt/app-root/src/pythonpath
