@@ -1,0 +1,28 @@
+schemaVersion: "2.0.0"
+commandTests:
+- name: packages
+  command: pip
+  args: ["list"]
+  expectedOutput:
+  - apache-superset
+  - Authlib
+  - ibm-db
+  - ibm-db-sa
+  - psycopg2-binary
+  - trino
+fileExistenceTests:
+- name: pythonpath
+  path: /opt/app-root/src/pythonpath
+  shouldExist: true
+  uid: 1001
+  gid: 0
+metadataTest:
+  env:
+  - key: SUPERSET_HOME
+    value: /opt/app-root/src
+  - key: SUPERSET_VERSION
+    value: "1.1.0"
+  - key: FLASK_APP
+    value: superset.app:create_app()
+  exposedPorts: ["8080"]
+  workdir: "/opt/app-root/src"
