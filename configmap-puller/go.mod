@@ -1,6 +1,6 @@
 module configmap-puller
 
-go 1.16
+go 1.15
 
 require (
 	k8s.io/api v0.21.2

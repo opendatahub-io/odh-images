@@ -1,4 +1,4 @@
-FROM golang:1.16 as builder
+FROM registry.access.redhat.com/ubi8/go-toolset:1.15.13-4 as builder
 
 WORKDIR /src
 
@@ -8,10 +8,12 @@ RUN go mod download
 
 COPY cmd/ ./cmd
 
-RUN CGO_ENABLED=0 go build -o /bin/configmap-puller ./cmd/configmap-puller
+RUN mkdir -p /tmp/bin \
+    && CGO_ENABLED=0 go build -o /tmp/bin/configmap-puller ./cmd/configmap-puller \
+    && chmod +x /tmp/bin/configmap-puller
 
 # actual image:
-FROM alpine:latest
+FROM registry.access.redhat.com/ubi8/go-toolset:1.15.13-4
 WORKDIR /app
-COPY --from=builder /bin/configmap-puller /bin/configmap-puller
-ENTRYPOINT [ "/bin/configmap-puller" ]
+COPY --from=builder /tmp/bin/configmap-puller /usr/local/bin/configmap-puller
+ENTRYPOINT [ "/usr/local/bin/configmap-puller" ]
