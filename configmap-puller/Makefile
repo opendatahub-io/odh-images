@@ -1,6 +1,6 @@
 DOCKER_COMMAND ?= sudo docker
 
-DOCKER_IMAGE ?= quay.io/erdii/configmap-puller:dev
+DOCKER_IMAGE ?= quay.io/internaldatahub/configmap-puller:0.1
 
 build:
 	$(DOCKER_COMMAND) build -t $(DOCKER_IMAGE) .
