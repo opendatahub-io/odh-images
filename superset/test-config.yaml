@@ -8,6 +8,7 @@ commandTests:
   - Authlib
   - ibm-db
   - ibm-db-sa
+  - prophet
   - psycopg2-binary
   - trino
 fileExistenceTests:
@@ -21,7 +22,7 @@ metadataTest:
   - key: SUPERSET_HOME
     value: /opt/app-root/src
   - key: SUPERSET_VERSION
-    value: "1.1.0"
+    value: "1.3.2"
   - key: FLASK_APP
     value: superset.app:create_app()
   exposedPorts: ["8080"]

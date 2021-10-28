@@ -27,7 +27,11 @@ cp -Rf /tmp/src/. ./
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
 pip install --no-cache-dir \
-    apache-superset[trino,postgres,mysql,db2,thumbnails]==1.1.0 \
-    Authlib==0.15.4
+    Authlib
+    Flask==1.1.4 \
+	  Flask-WTF==0.14.3 \
+	  pandas==1.2.5 \
+    apache-superset[trino,postgres,mysql,db2,thumbnails]==1.3.2 \
+    prophet
 
 mkdir -p ${HOME}/pythonpath
