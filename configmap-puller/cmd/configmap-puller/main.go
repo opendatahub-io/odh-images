@@ -101,7 +101,7 @@ func watchConfigMap(ctx context.Context, clientset *kubernetes.Clientset, name, 
 		return nil, nil, err
 	}
 
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(1 * time.Minute)
 
 	errChan := make(chan error)
 	dataChan := make(chan string)
