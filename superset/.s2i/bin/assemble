@@ -27,7 +27,7 @@ cp -Rf /tmp/src/. ./
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
 pip install --no-cache-dir \
-    Authlib
+    Flask-AppBuilder[oauth] \
     Flask==1.1.4 \
 	  Flask-WTF==0.14.3 \
 	  pandas==1.2.5 \
