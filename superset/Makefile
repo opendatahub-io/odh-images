@@ -1,9 +1,17 @@
-IMAGE_NAME?=centos/python-38-centos7
+SUPERSET_VERSION=1.4.1-ubi
+IMAGE_NAME=quay.io/opendatahub/superset:${SUPERSET_VERSION}
 
-.PHONY: build
+BUILDER:=$(shell command -v podman 2> /dev/null || command -v docker 2> /dev/null || echo "docker or podman not found")
+
+all: build push
+
 build:
-	s2i build . centos/python-38-centos7 $(IMAGE_NAME) -E .s2i/environment
+	echo "Building $(BUILDER) image..."
+	$(BUILDER) build -t $(IMAGE_NAME) .
 
-.PHONY: test
+push:
+	echo "Pushing $(IMAGE_NAME) image..."
+	$(BUILDER) push $(IMAGE_NAME)
+
 test:
 	container-structure-test test -i $(IMAGE_NAME) -c test-config.yaml
