@@ -42,7 +42,7 @@ RUN mkdir /etc/superset  && \
                 pyhive \
                 markupsafe==2.0.1 \
                 psycopg2 \
-                authlib \
+                authlib==0.15.1 \
                 python-ldap \
                 apache-superset==${SUPERSET_VERSION}
 
