@@ -34,16 +34,28 @@ RUN mkdir /etc/superset  && \
                 python38-pip \
                 python38-wheel \
                 openssl-devel \
+                cyrus-sasl \
                 cyrus-sasl-devel \
+                cyrus-sasl-gssapi \
+                cyrus-sasl-plain \
                 openldap-devel && \
     yum clean all && \
     rm -rf /var/yum/cache/* && \
-    pip install sqlalchemy-trino \
+    pip install sqlalchemy-trino==0.3.0 \
+                cryptography==3.4.8 \
                 pyhive \
                 markupsafe==2.0.1 \
                 psycopg2 \
                 authlib==0.15.1 \
+                httplib2 \
+                sasl \
+                thrift \
+                thrift-sasl \
                 python-ldap \
+                urllib3==1.26.7 \
+                Cython \
+                pystan \
+                trino \
                 apache-superset==${SUPERSET_VERSION}
 
 VOLUME /etc/superset \
@@ -53,6 +65,5 @@ VOLUME /etc/superset \
 EXPOSE 8088
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
 
-USER 185
-
 CMD ["gunicorn", "superset.app:create_app()"]
+USER 185
