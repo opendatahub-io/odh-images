@@ -101,7 +101,7 @@ func watchConfigMap(ctx context.Context, clientset *kubernetes.Clientset, name, 
 		return nil, nil, err
 	}
 
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(1 * time.Minute)
 
 	errChan := make(chan error)
 	dataChan := make(chan string)
@@ -121,7 +121,8 @@ func watchConfigMap(ctx context.Context, clientset *kubernetes.Clientset, name, 
 
 			case t := <-ticker.C:
 				log.Println("tick at:", t)
-				timeoutCtx, _ := context.WithTimeout(ctx, 10*time.Second)
+				timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+				defer cancel()
 				cm, err := clientset.CoreV1().ConfigMaps(namespace).Get(timeoutCtx, name, metav1.GetOptions{})
 				if err != nil {
 					errChan <- err
