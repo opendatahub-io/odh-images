@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/python-38:1-86
 
 # Superset version
-ARG SUPERSET_VERSION=1.5.0
+ARG SUPERSET_VERSION=1.5.2
 
 # Configure environment
 ENV GUNICORN_BIND=0.0.0.0:8088 \
