@@ -1,7 +1,7 @@
-FROM registry.access.redhat.com/ubi8/python-38:1-86
+FROM registry.access.redhat.com/ubi8/python-39:1-87
 
 # Superset version
-ARG SUPERSET_VERSION=1.5.0
+ARG SUPERSET_VERSION=1.5.2
 
 # Configure environment
 ENV GUNICORN_BIND=0.0.0.0:8088 \
@@ -42,7 +42,7 @@ RUN mkdir /etc/superset  && \
                 pyhive \
                 markupsafe==2.0.1 \
                 psycopg2 \
-                authlib==0.15.1 \
+                authlib==1.1.0 \
                 python-ldap \
                 apache-superset==${SUPERSET_VERSION}
 
