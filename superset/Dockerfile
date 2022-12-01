@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/python-38:1-86
+FROM registry.access.redhat.com/ubi8/python-39:1-87
 
 # Superset version
 ARG SUPERSET_VERSION=1.5.2
